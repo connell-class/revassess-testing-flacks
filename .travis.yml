@@ -3,3 +3,6 @@ jdk: openjdk8
 git:
     depth: false
 script: ./build.sh
+notifications:
+    email:
+        - jean@4ray.co
