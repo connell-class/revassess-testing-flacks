@@ -1,0 +1,1 @@
+INSERT INTO APP_USER (USERNAME, PASSWORD, FIRST_NAME, LAST_NAME, ROLE_ID) VALUES ('jean', 'securepassword', 'Jean', 'Lucas', 4)
