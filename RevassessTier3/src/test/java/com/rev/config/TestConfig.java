@@ -14,7 +14,7 @@ public class TestConfig{
         .setProperty("hibernate.connection.url", ConnectionConfig.URL)
         .setProperty("hibernate.connection.username", ConnectionConfig.USERNAME)
         .setProperty("hibernate.connection.password", ConnectionConfig.PASSWORD)
-        .setProperty("hibernate.connection.pool_size", "1")
+        .setProperty("hibernate.connection.pool_size", "10")
         .setProperty("hibernate.connection.isolation", String.valueOf(Connection.TRANSACTION_SERIALIZABLE))
         .setProperty("hibernate.hbm2ddl.auto", "none")
         .setProperty("hibernate.show_sql", "true")

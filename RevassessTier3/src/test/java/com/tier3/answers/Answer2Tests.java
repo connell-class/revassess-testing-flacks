@@ -13,6 +13,7 @@ import com.rev.config.TestConfig;
 import org.hibernate.SessionFactory;
 import org.hibernate.dialect.Dialect;
 import org.hibernate.engine.jdbc.dialect.internal.StandardDialectResolver;
+import org.hibernate.engine.jdbc.dialect.spi.DatabaseMetaDataDialectResolutionInfoAdapter;
 import org.hibernate.engine.jdbc.dialect.spi.DialectResolutionInfo;
 import org.hibernate.engine.jdbc.dialect.spi.DialectResolver;
 import org.hibernate.jdbc.ReturningWork;
@@ -42,7 +43,7 @@ public class Answer2Tests {
             @Override
             public Long execute(Connection connection) throws SQLException {
                 DialectResolver dialectResolver = new StandardDialectResolver();
-                Dialect dialect =  dialectResolver.resolveDialect((DialectResolutionInfo) connection.getMetaData());
+                Dialect dialect =  dialectResolver.resolveDialect(new DatabaseMetaDataDialectResolutionInfoAdapter(connection.getMetaData()));
                 PreparedStatement preparedStatement = null;
                 ResultSet resultSet = null;
                 try {

@@ -20,7 +20,7 @@ public class Answer3Tests {
         Session sess = TestConfig.getInstance().openSession();
         Transaction tx = sess.beginTransaction();
         assertNotNull(sess.createNativeQuery(
-                "insert into app_user (username, password, first_name, last_name, role_id) values ('testing','testing','testing','testing',1"));
+                "insert into app_user (username, password, first_name, last_name, role_id) values ('testing','testing','testing','testing',1)"));
         assertNotNull(sess.createNativeQuery(
                 "insert into flashcard (question, answer, category_id) values ('testing','testing',2)"));
         assertNotNull(sess.createNativeQuery("insert into study_set (name, owner_id) values ('testing',2)"));
