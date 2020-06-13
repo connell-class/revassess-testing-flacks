@@ -1,5 +1,17 @@
 package com.rev.model;
 
-public class Flashcard {
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
+@EqualsAndHashCode
+public class Flashcard {
+    Integer id;
+    String question;
+    String answer;
+    Category category;
 }

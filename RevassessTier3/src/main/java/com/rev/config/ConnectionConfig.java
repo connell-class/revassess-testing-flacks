@@ -1,6 +1,6 @@
 package com.rev.config;
 
-import java.sql.Connection;
+import java.sql.*;
 
 /**
  * 
@@ -22,15 +22,20 @@ public class ConnectionConfig {
 	public static final String TIER_3_PROCEDURE_NAME="";
 	//name of the created sequence in tier 3
 	public static final String TIER_3_SEQUENCE_NAME="";
-	
+
 	//implement this method to connect to the db and return the connection object
-	public static Connection connect(){
-		return null;
+	public static Connection connect() throws SQLException {
+		return DriverManager.getConnection(URL, USERNAME, PASSWORD);
 	}
 
 	//implement this method with a callable statement that calls the absolute value sql function
-	public static long callAbsoluteValueFunction(long value){
-		return value;
+	public static long callAbsoluteValueFunction(long value) throws SQLException {
+		String sql = "{ call " + "get_abs(?, ?) }";
+		CallableStatement cs = connect().prepareCall(sql);
+		cs.setLong(1, value);
+		cs.registerOutParameter(2, Types.BIGINT);
+		cs.execute();
+		return (long) cs.getObject(2);
 	}
 	
 	//private constructor so the class cannot be instantiated

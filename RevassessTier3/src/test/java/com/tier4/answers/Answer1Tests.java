@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 import java.sql.CallableStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
 
@@ -23,7 +24,8 @@ public class Answer1Tests {
         CallableStatement cs = ConnectionConfig.connect().prepareCall("{? = call ceil(?)}");
         cs.setDouble(2, 2.5);
         cs.registerOutParameter(1, Types.INTEGER);
-        assertEquals(3, cs.executeQuery().getInt(1));
+        cs.execute();
+        assertEquals(3, cs.getObject(1));
         addPoints(10);
     }
 }
