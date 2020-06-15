@@ -45,17 +45,17 @@ public class Answer2Tests {
     }
 
     @Test
-    public void test2() throws ServletException, IOException, IllegalAccessException, IllegalArgumentException,
+    public void test2() throws IOException, IllegalAccessException, IllegalArgumentException,
             InvocationTargetException, NoSuchMethodException, SecurityException {
         HttpServletRequest request = Mockito.mock(HttpServletRequest.class);
         HttpServletResponse response = Mockito.mock(HttpServletResponse.class);
         StringWriter stringWriter = new StringWriter();
         PrintWriter writer = new PrintWriter(stringWriter);
         when(response.getWriter()).thenReturn(writer);
-        serv.getClass().getMethod("doGet", HttpServletRequest.class, HttpServletResponse.class).invoke(request, response);
+        serv.getClass().getMethod("doGet", HttpServletRequest.class, HttpServletResponse.class).invoke(serv, request, response);
         writer.flush();
         assertTrue(stringWriter.toString().contains(
-                "{\"flashcards\":[{\"id\":1,\"question\":\"core java question\",\"answer\":\"dummy answer\",\"category\":\"core java\"},{\"id\":2,\"question\":\"java reflection question\",\"answer\":\"dummy answer\",\"category\":\"java reflection\"},{\"id\":3,\"question\":\"java collections question\",\"answer\":\"dummy answer\",\"category\":\"java collections\"}]}"));
+                "{\"flashcards\":[{\"question\":\"core java question\",\"answer\":\"dummy answer\",\"id\":1,\"category\":\"core java\"},{\"question\":\"java reflection question\",\"answer\":\"dummy answer\",\"id\":2,\"category\":\"java reflection\"},{\"question\":\"java collections question\",\"answer\":\"dummy answer\",\"id\":3,\"category\":\"java collections\"}]}"));
         addPoints(200);
     }
 
