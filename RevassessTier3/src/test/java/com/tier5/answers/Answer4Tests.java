@@ -12,11 +12,14 @@ import java.util.Map;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import junit.framework.AssertionFailedError;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static com.tier5.answers.PointsTests.addPoints;
 
@@ -64,15 +67,15 @@ public class Answer4Tests {
 
     @Test
     public void testCarousel() throws InterruptedException {
-        assertTrue(checkElements());
-        for(int i = 0; i<2; i++){
-            next();
-            // new WebDriverWait(wd, 3).until(ExpectedConditions.visibilityOf(wd.findElement(By.xpath("//*[@class='carousel-item active']"))));
+        ((JavascriptExecutor)wd).executeScript("carousel()");
+
+        for (int i = 0; i < 3; i++) {
             Thread.sleep(3000);
             assertTrue(checkElements());
+            next();
         }
+
         addPoints(40);
-        
     }
 
     private Map<String, String> refreshElements(){

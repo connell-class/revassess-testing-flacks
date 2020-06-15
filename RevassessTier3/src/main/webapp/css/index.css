@@ -1,0 +1,16 @@
+.carousel-indicators .active {
+    background-color: #CC6E79;
+}
+
+.container {
+    text-align: center;
+    background-color: firebrick;
+}
+
+p {
+    color: black;
+}
+
+.carousel-indicators {
+    overflow: visible;
+}
